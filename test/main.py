@@ -18,7 +18,7 @@ Settings.load(
 #Settings.setup() #With this command you can run a fast setup
 
 Settings.main()
-print(f"Welcome '{Settings.username}'")
+print(f"hi '{Settings.username}'")
 
 time.sleep(0.35)
 print("We are loading the terminal...")

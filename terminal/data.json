@@ -1,0 +1,18 @@
+{
+    "version": "1.1.2",
+    "cai-version": "2.3.3",
+    "cai-repo": "BlokkaDev/CAI",
+    "commands": {
+        "help": "Get help with the terminal commands",
+        "exit": "Close the terminal",
+        "clear": "To clear the terminal",
+        "--version": "Terminal version",
+        "cai": "Use CAI commands (cai -h) to get help with the commands",
+        "source": "Select a folder"
+    },
+    "cai-commands": {
+        "help": "Get help with the CAI commands",
+        "--version": "CAI version",
+        "upgrade": "Upgrade the current CAI version on your device"
+    }
+}
