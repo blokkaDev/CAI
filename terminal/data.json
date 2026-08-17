@@ -1,6 +1,6 @@
 {
-    "version": "1.1.2",
-    "cai-version": "2.3.3",
+    "version": "1.2.1",
+    "cai-version": "2.5.4",
     "cai-repo": "BlokkaDev/CAI",
     "commands": {
         "help": "Get help with the terminal commands",

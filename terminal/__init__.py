@@ -78,11 +78,11 @@ class Terminal:
         return function(self)
 
     def terminal(self, path="terminal/data.json", settings="settings/data.json"):
-
         self.load(path)
         self.settings(settings)
 
-        self.Settings.main()
+        self.Settings.load(settings)
+
         self.Settings.clearWindow()
 
         while True:
@@ -90,8 +90,7 @@ class Terminal:
             cmd= input("> ")
 
             #Developer mode
-            if not self.Settings.developer:
-
+            if not self.Settings.settings.get("developer", False).get("enabled", False):
                 print(
                     "Please enable the developer mode "
                     "to run commands"
