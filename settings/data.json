@@ -1,0 +1,47 @@
+{
+    "username": "User",
+    "developer": {
+        "enabled": false,
+        "verbose": false,
+        "apis": {
+            "enabled": false,
+            "preferences": {
+                "port": "13743",
+                "host": "0.0.0.0"
+            }
+        },
+
+        "logging": {
+            "enabled": false,
+            "level": "info",
+            "saveToFile": true
+        }
+    },
+    "mainModel": {
+        "name": "intent-neuralNetwork-v0.4.2",
+        "id": 0
+    },
+    "preferences": {
+        "theme": "dark",
+        "notifications": true
+    },
+
+    "models": {
+        "intent-neuralNetwork-v0.4.2": {
+            "training": {
+                "epochs": 500,
+                "batchSize": 32,
+                "learningRate": 0.01
+            },
+            "temperature": 0.7,
+            "embeddingSize": 768
+        }
+    },
+
+    "paths": {
+        "models-list": "models/models.json"
+    },
+
+    "setupped": false,
+    "configVersion": 1
+}
