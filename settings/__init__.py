@@ -79,6 +79,8 @@ class Settings:
             return message
 
     def setup(self, path="settings/data.json") -> dict:
+        self.clearWindow()
+
         print(
             f"Hey {self.settings.get('username', self.username)}, "
             "let's customize your experience:"
