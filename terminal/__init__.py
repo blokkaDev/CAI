@@ -29,6 +29,12 @@ class Terminal:
             "source": source
         }
 
+    def run(self, path="terminal/data.json", settings="settings/data.json"):
+        self.terminal(
+            path=path,
+            settings=settings
+        )
+
     def load(self, path="terminal/data.json"):
         with open(
             path,
@@ -69,7 +75,6 @@ class Terminal:
         #CAI commands
         if name== "cai":
             return self.cai.execute(args)
-
 
         function= self.commands.get(name)
         if function is None:
@@ -126,6 +131,9 @@ class Terminal:
                 continue
 
             #Execute command
+            if cmd== "exit":
+                break
+
             response= self.command(cmd)
             print(
                 response.get(

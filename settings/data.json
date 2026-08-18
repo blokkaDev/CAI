@@ -18,7 +18,7 @@
     },
     "mainModel": {
         "name": "intent-neuralNetwork-v0.4.2",
-        "id": 0
+        "id": "0"
     },
     "preferences": {
         "theme": "light",
@@ -39,5 +39,5 @@
         "models-list": "models/models.json"
     },
     "setupped": false,
-    "configVersion": 1
+    "configVersion": "1.1.2"
 }

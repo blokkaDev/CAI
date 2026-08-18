@@ -1,0 +1,107 @@
+{
+    "selections": {
+        "Terminal": {
+            "open": "terminal"
+        },
+        "Settings": {
+            "menu": {
+                "Username": {
+                    "action": "settings.username"
+                },
+                "Developer": {
+                    "menu": {
+                        "Toggle Developer": {
+                            "action": "settings.developer_enabled"
+                        },
+                        "Toggle Verbose": {
+                            "action": "settings.verbose"
+                        },
+                        "APIs": {
+                            "menu": {
+                                "Toggle APIs": {
+                                    "action": "settings.apis_enabled"
+                                },
+                                "Preferences": {
+                                    "menu": {
+                                        "Port": {
+                                            "action": "settings.apis_preferences_port"
+                                        },
+                                        "Host": {
+                                            "action": "settings.apis_preferences_host"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "Logging": {
+                            "menu": {
+                                "Toggle Logging": {
+                                    "action": "settings.logging_enabled"
+                                },
+                                "File Saving": {
+                                    "action": "settings.logging_savefile"
+                                }
+                            }
+                        },
+                        "Reset Settings": {
+                            "action": "settings.reset_settings"
+                        }
+                    }
+                },
+                "Models": {
+                    "menu": {
+                        "Main": {
+                            "menu": {
+                                "Name": {
+                                    "action": "settings.models_mainname"
+                                },
+                                "ID": {
+                                    "action": "settings.models_mainid"
+                                }
+                            }
+                        },
+                        "Models List": {
+                            "action": "settings.models_list"
+                        },
+                        "Add Model [soon]": {
+                            "action": "settings.models_addmodel"
+                        },
+                        "Remove Model [soon]": {
+                            "action": "settings.models_removemodel"
+                        }
+                    }
+                },
+                "Preferences": {
+                    "menu": {
+                        "Theme": {
+                            "action": "settings.preferences_theme"
+                        },
+                        "Notifications Toggle": {
+                            "action": "settings.preferences_notifications"
+                        }
+                    }
+                }
+            }
+        },
+        "Menu [test]": {
+            "menu": {
+                "element-1 [terminal]": {
+                    "open": "terminal"
+                },
+                "element-2": {
+                    "menu": {
+                        "element-1 [terminal]": {
+                            "open": "terminal"
+                        },
+                        "element-2 [none]": {
+                            "": ""
+                        },
+                        "element-3 [none action]": {
+                            "action": "settings.b"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -16,6 +16,49 @@ class Settings:
         self.theme= "light"
         self.notifications= True
         self.models= {}
+        self.normalSettings= {
+    "username": "User",
+    "developer": {
+        "enabled": False,
+        "verbose": False,
+        "apis": {
+            "enabled": False,
+            "preferences": {
+                "port": "13743",
+                "host": "0.0.0.0"
+            }
+        },
+        "logging": {
+            "enabled": False,
+            "level": "info",
+            "saveToFile": True
+        }
+    },
+    "mainModel": {
+        "name": "intent-neuralNetwork-v0.4.2",
+        "id": "0"
+    },
+    "preferences": {
+        "theme": "light",
+        "notifications": False
+    },
+    "models": {
+        "intent-neuralNetwork-v0.4.2": {
+            "training": {
+                "epochs": 500,
+                "batchSize": 32,
+                "learningRate": 0.01
+            },
+            "temperature": 0.7,
+            "embeddingSize": 768
+        }
+    },
+    "paths": {
+        "models-list": "models/models.json"
+    },
+    "setupped": True,
+    "configVersion": "1.1.2"
+}
 
     def load(self, path: str="settings/data.json") -> dict:
         with open(file=path, mode="r", encoding="UTF-8") as file:
@@ -28,6 +71,165 @@ class Settings:
             "success": True, 
             "message": "Settings loaded successfully!"
         }
+
+    def action(self, action):
+        def next():
+            q= input("Continue? [Y/n]: ")
+            if q.lower()== "y":
+                return True
+            else:
+                return False
+
+        #Let's define the actions the user can execute in the main Interface
+        self.clearWindow()
+        if action== "username":
+            if next():
+                q= input("Username: ")
+                self.settings["username"]= str(q)
+                print("Username changed")
+            else:
+                print("Closing...")
+        if action== "models_mainname":
+            if next():
+                q= input("Main name: ")
+                self.settings["mainModel"]["name"]= str(q)
+                print("Main model name changed")
+            else:
+                print("Closing...")
+        if action== "models_mainid":
+            if next():
+                q= input("Main ID: ")
+                self.settings["mainModel"]["id"]= str(q)
+                print("Main model ID changed")
+            else:
+                print("Closing...")
+        elif action== "models_list":
+            print("Models:")
+            print()
+
+            models= self.Models()
+            models.load(path=self.settings.get("paths", "models/models.json").get("models-list", "models/models.json"))
+            ids= []
+            for model in models.list:
+                print(f"{model} [{len(ids)}]")
+
+            print()
+            input("Press ENTER to continue...")
+        elif action== "preferences_theme":
+            print("Choose a theme:")
+            
+            print("Light [0]")
+            print("Dark [1]")
+            
+            ids= [
+                "light",
+                "dark"
+            ]
+            
+            while True:
+                try:
+                    themeID= int(input("Theme id: "))
+                    try: 
+                        self.settings["preferences"]["theme"]= ids[themeID]
+                        print("Theme ID selected")
+                        break
+                    except IndexError:
+                        print(f"Please choose a number between 0 and 1.")
+                except (TypeError, ValueError):
+                    print("Theme ID must be a number")
+
+            
+        #I'm gonna add these interaction in a next update
+        elif action== "models_addmodel":
+            print("Nothing there")
+        elif action== "models_removemodel":
+            print("Nothing there")
+        
+        elif action== "developer_enabled":
+            if next():
+                if self.settings["developer"]["enabled"]:
+                    self.settings["developer"]["enabled"]= False
+                    print("Developer Mode Disabled")
+                else:
+                    self.settings["developer"]["enabled"]= True
+                    print("Developer Mode Enabled")
+            else:
+                print("Closing...")
+        elif action== "verbose":
+            if next():
+                if self.settings["developer"]["verbose"]:
+                    self.settings["developer"]["verbose"]= False
+                    print("Verbose Mode Disabled")
+                else:
+                    self.settings["developer"]["verbose"]= True
+                    print("Verbose Mode Enabled")
+            else:
+                print("Closing...")
+        elif action== "preferences_notifications":
+            if next():
+                if self.settings["preferences"]["notifications"]:
+                    self.settings["preferences"]["notifications"]= False
+                    print("Notifications Disabled")
+                else:
+                    self.settings["preferences"]["notifications"]= True
+                    print("Notifications Enabled")
+            else:
+                print("Closing...")
+        elif action== "reset_settings":
+            print("THIS ACTION WILL DELEATE EVERY SETTING CHANGED")
+            print("YOU CAN'T UNDO THIS ACTION!")
+            print()
+            if next():
+                self.settings= self.normalSettings
+            else:
+                print("Closing...")
+        elif action== "apis_enabled":
+            if next():
+                if self.settings["developer"]["apis"]["enabled"]:
+                    self.settings["developer"]["apis"]["enabled"]= False
+                    print("APIs Mode Disabled")
+                else:
+                    self.settings["developer"]["apis"]["enabled"]= True
+                    print("APIs Mode Enabled")
+            else:
+                print("Closing...")
+        elif action== "logging_enabled":
+            if next():
+                if self.settings["developer"]["logging"]["enabled"]:
+                    self.settings["developer"]["logging"]["enabled"]= False
+                    print("Logging Mode Disabled")
+                else:
+                    self.settings["developer"]["logging"]["enabled"]= True
+                    print("Logging Mode Enabled")
+            else:
+                print("Closing...")
+        elif action== "logging_savefile":
+            if next():
+                if self.settings["developer"]["logging"]["saveToFile"]:
+                    self.settings["developer"]["logging"]["saveToFile"]= False
+                    print("Save Logging Mode Disabled")
+                else:
+                    self.settings["developer"]["logging"]["saveToFile"]= True
+                    print("Save Logging Mode Enabled")
+            else:
+                print("Closing...")
+        elif action== "apis_preferences_port":
+            if next():
+                q= input("Port: ")
+                self.settings["developer"]["apis"]["preferences"]["port"]= str(q)
+                print("Port changed")
+            else:
+                print("Closing...")
+        elif action== "apis_preferences_host":
+            if next():
+                q= input("Host: ")
+                self.settings["developer"]["apis"]["preferences"]["host"]= str(q)
+                print("Host changed")
+            else:
+                print("Closing...")
+
+        time.sleep(1)
+        self.save()
 
     def main(self, values=["username", "developer", "verbose", "apis", "logging", "model", "theme", "notifications"]) -> dict:
         developer= self.settings.get("developer", False)
