@@ -289,7 +289,7 @@ class Settings:
         )
 
         self.username= input("username: ")
-        while len(self.username.split()) != 1 or len(self.username) > 10 or len(self.username) < 3:
+        while len(self.username.split())!= 1 or len(self.username) > 10 or len(self.username) < 3:
             #let's verify the username
             if " " in self.username or len(self.username)>= 11:
                 #it's not a bug that you can put a username directly from 'settings/data.json' bypassing these blocks

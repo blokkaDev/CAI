@@ -1,7 +1,7 @@
 {
-    "username": "User",
+    "username": "Blokka",
     "developer": {
-        "enabled": false,
+        "enabled": true,
         "verbose": false,
         "apis": {
             "enabled": false,
@@ -18,11 +18,11 @@
     },
     "mainModel": {
         "name": "intent-neuralNetwork-v0.4.2",
-        "id": "0"
+        "id": 0
     },
     "preferences": {
-        "theme": "light",
-        "notifications": false
+        "theme": "dark",
+        "notifications": true
     },
     "models": {
         "intent-neuralNetwork-v0.4.2": {
@@ -38,6 +38,6 @@
     "paths": {
         "models-list": "models/models.json"
     },
-    "setupped": false,
+    "setupped": true,
     "configVersion": "1.1.2"
 }

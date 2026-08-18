@@ -20,10 +20,10 @@ class Interface:
     
     def get_key(self):
         #Get keyboard key pressed by the user
-        key = os.read(sys.stdin.fileno(), 1)
+        key= os.read(sys.stdin.fileno(), 1)
 
-        if key == b"\x1b":
-            ready, _, _ = select.select(
+        if key== b"\x1b":
+            ready, _, _= select.select(
                 [sys.stdin.fileno()],
                 [],
                 [],
@@ -33,10 +33,10 @@ class Interface:
             if not ready:
                 return "\x1b"
 
-            key += os.read(sys.stdin.fileno(), 1)
+            key+= os.read(sys.stdin.fileno(), 1)
 
-            if key == b"\x1b[":
-                ready, _, _ = select.select(
+            if key== b"\x1b[":
+                ready, _, _= select.select(
                     [sys.stdin.fileno()],
                     [],
                     [],
@@ -44,7 +44,7 @@ class Interface:
                 )
 
                 if ready:
-                    key += os.read(sys.stdin.fileno(), 1)
+                    key+= os.read(sys.stdin.fileno(), 1)
             return key.decode()
         return key.decode()
 
@@ -71,12 +71,12 @@ class Interface:
             key= self.get_key()
 
             if key== "\x1b[A":
-                selected -= 1
+                selected-= 1
                 if selected < 0:
                     selected= len(elements) - 1
 
             elif key== "\x1b[B":
-                selected += 1
+                selected+= 1
                 if selected >= len(elements):
                     selected= 0
 
